@@ -3,7 +3,7 @@
 #SBATCH --job-name=download_archr
 #SBATCH --account=def-itobias
 #SBATCH --time=00:10:00
-#SBATCH --mem=10xG
+#SBATCH --mem=10G
 #SBATCH --cpus-per-task=1
 #SBATCH --error=%x_%j_error.txt
 #SBATCH --output=%x_%j_output.txt
