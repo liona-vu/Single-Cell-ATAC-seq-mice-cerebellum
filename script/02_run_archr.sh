@@ -10,6 +10,7 @@
 #SBATCH --error=%x_%j_error.txt
 #SBATCH --output=%x_%j_output.txt
 
+#create positional parameter to input script
 INPUT_RSCRIPT=${1}
 
 #load module
