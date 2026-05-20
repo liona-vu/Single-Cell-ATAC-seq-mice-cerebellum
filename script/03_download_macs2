@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#SBATCH --job-name=03_download_macs2
+#SBATCH --account=def-itobias
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=10G
+#SBATCH --time=00:10:00
+#SBATCH --error=%x_%j_error.txt
+#SBATCH --output=%x_%j_output.txt
+
+#Following is to download macs2 for peak calling in ArchR
+
+#load module to install macs2
+module load scipy-stack/2026a
+
+pip install MACS2
