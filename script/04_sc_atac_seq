@@ -38,9 +38,21 @@ input_files
 #                   GSM5393632_E14_snATAC 
 #"GSM5393632_E14_snATAC_fragments.tsv.gz" 
 
+#install mice reference genome
+install.packages("/home/lionavu/projects/def-itobias/BINF_6999/R_libs/BSgenome.Mmusculus.UCSC.mm10_1.4.3.tar.gz", 
+                  lib = "/home/lionavu/projects/def-itobias/BINF_6999/R_libs", 
+                  repos = NULL, 
+                  type = "source")
 
+#load mice reference pacakage
+library(BSgenome.Mmusculus.UCSC.mm10_1.4.3.tar.gz, 
+        lib.loc = "/home/lionavu/projects/def-itobias/BINF_6999/R_libs")
 
+#Set the ArchR default genome to mm10 
+addArchRGenome("mm10")
 
+#Set parallel threads to capability to 16
+addArchRThreads(threads = 16)
 
 
 
