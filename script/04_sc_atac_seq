@@ -1,0 +1,48 @@
+
+#load in libraries
+library(ArchR)
+library(parallel)
+
+addArchRLocking(locking = TRUE)
+set.seed(1)
+
+#load in annotated RDS file, file can be found with the following link:
+#https://zenodo.org/records/6097549
+anno_proj <- readRDS(file="E10_13_final.rds")
+
+#perform some EDA
+class(anno_proj)
+#is a Seurat object [1] "Seurat", attr(,"package"), [1] "Seurat"
+
+table(anno_proj$cellType1)
+# seems like there are 25 different cell types such as CN.Th, GABA.Pre
+
+sum(table(anno_proj$cellType1))
+#19372 cells in total
+
+#get file data
+input_files <- c("GSM5393630_E12_snATAC_fragments.tsv.gz",
+                 "GSM5393631_E13_snATAC_fragments.tsv.gz",
+                 "GSM5393632_E14_snATAC_fragments.tsv.gz" )
+
+#add names to the fragment files
+names(input_files) <- c("GSM5393630_E12_snATAC", "GSM5393631_E13_snATAC", "GSM5393632_E14_snATAC")
+
+#check if names are properly added
+input_files
+
+#                   GSM5393630_E12_snATAC 
+#"GSM5393630_E12_snATAC_fragments.tsv.gz" 
+#                   GSM5393631_E13_snATAC 
+#"GSM5393631_E13_snATAC_fragments.tsv.gz" 
+#                   GSM5393632_E14_snATAC 
+#"GSM5393632_E14_snATAC_fragments.tsv.gz" 
+
+
+
+
+
+
+
+
+
