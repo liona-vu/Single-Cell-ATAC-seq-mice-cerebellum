@@ -1,0 +1,8 @@
+
+module load samtools
+module load htslibs/1.22.1
+
+  
+bgzip GSM5393630_E12_snATAC_fragments.tsv
+bgzip GSM5393631_E13_snATAC_fragments.tsv
+bgzip GSM5393632_E14_snATAC_fragments.tsv
