@@ -1,8 +1,25 @@
+#!/bin/bash
+
+#SBATCH --job-name=convert_files
+#SBATCH --account=def-itobias
+#SBATCH --time'=02:00:00
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=16G
+#SBATCH --error=%x_%j_error.txt
+#SBATCH --output=%x_%j_output.txt
 
 module load samtools
 module load htslibs/1.22.1
 
-  
-bgzip GSM5393630_E12_snATAC_fragments.tsv
-bgzip GSM5393631_E13_snATAC_fragments.tsv
-bgzip GSM5393632_E14_snATAC_fragments.tsv
+#wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393630
+#wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393631
+#wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393632
+
+gunzip https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393630
+#gunzip https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393631
+#gunzip https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393632
+
+bgzip -f GSM5393630_E12_snATAC_fragments.tsv
+#bgzip -f GSM5393631_E13_snATAC_fragments.tsv
+#bgzip -f GSM5393632_E14_snATAC_fragments.tsv
+
