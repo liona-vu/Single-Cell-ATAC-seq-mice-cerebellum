@@ -16,10 +16,18 @@ module load htslib/1.22.1
 #wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393632
 
 gunzip GSM5393630_E12_snATAC_fragments.tsv.gz
-#gunzip GSM5393631_E13_snATAC_fragments.tsv.gz
-#gunzip GSM5393632_E14_snATAC_fragments.tsv.gz
+gunzip GSM5393631_E13_snATAC_fragments.tsv.gz
+gunzip GSM5393632_E14_snATAC_fragments.tsv.gz
 
-bgzip -f GSM5393630_E12_snATAC_fragments.tsv
+mkdir fragment_files 
+mv GSM5393630_E12_snATAC_fragments.tsv.gz GSM5393631_E13_snATAC_fragments.tsv.gz GSM5393632_E14_snATAC_fragments.tsv.gz fragment_files/
+
+cd fragment files
+
+echo $PWD
+echo *
+
+#bgzip -f GSM5393630_E12_snATAC_fragments.tsv
 #bgzip -f GSM5393631_E13_snATAC_fragments.tsv
-#bgzip -f GSM5393632_E14_snATAC_fragments.tsv
+#gzip -f GSM5393632_E14_snATAC_fragments.tsv
 
