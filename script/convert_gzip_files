@@ -8,16 +8,16 @@
 #SBATCH --error=%x_%j_error.txt
 #SBATCH --output=%x_%j_output.txt
 
-module load samtools
-module load htslibs/1.22.1
+module load samtools/1.22.1
+module load htslib/1.22.1
 
 #wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393630
 #wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393631
 #wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393632
 
-gunzip https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393630
-#gunzip https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393631
-#gunzip https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393632
+gunzip GSM5393630_E12_snATAC_fragments.tsv.gz
+#gunzip GSM5393631_E13_snATAC_fragments.tsv.gz
+#gunzip GSM5393632_E14_snATAC_fragments.tsv.gz
 
 bgzip -f GSM5393630_E12_snATAC_fragments.tsv
 #bgzip -f GSM5393631_E13_snATAC_fragments.tsv
