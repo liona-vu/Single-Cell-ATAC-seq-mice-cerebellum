@@ -21,9 +21,9 @@ sum(table(anno_proj$cellType1))
 #19372 cells in total
 
 #get file data
-input_files <- c("GSM5393630_E12_snATAC_fragments.tsv.gz",
-                 "GSM5393631_E13_snATAC_fragments.tsv.gz",
-                 "GSM5393632_E14_snATAC_fragments.tsv.gz" )
+input_files <- c("fragment_files/GSM5393630_E12_snATAC_fragments.tsv.gz",
+                 "fragment_files/GSM5393631_E13_snATAC_fragments.tsv.gz",
+                 "fragment_files/GSM5393632_E14_snATAC_fragments.tsv.gz" )
 
 #add names to the fragment files
 names(input_files) <- c("GSM5393630_E12_snATAC", "GSM5393631_E13_snATAC", "GSM5393632_E14_snATAC")
