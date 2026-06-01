@@ -54,6 +54,18 @@ addArchRGenome("mm10")
 #Set parallel threads to capability to 16
 addArchRThreads(threads = 16)
 
+#create arrow files with default parameters 
+ArrowFiles <- createArrowFiles(
+  inputFiles = input_files,
+  sampleNames = names(input_files),
+  minTSS = 4, #Dont set this too high because you can always increase later
+  minFrags = 1000,
+  addTileMat = TRUE,
+  addGeneScoreMat = TRUE)
+
+
+
+
 
 
 
