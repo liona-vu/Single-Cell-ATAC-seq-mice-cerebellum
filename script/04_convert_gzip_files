@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#SBATCH --job-name=convert_files
+#SBATCH --job-name=04_convert_files
 #SBATCH --account=def-itobias
-#SBATCH --time'=02:00:00
+#SBATCH --time=02:00:00
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=16G
+#SBATCH --mem=8G
 #SBATCH --error=%x_%j_error.txt
 #SBATCH --output=%x_%j_output.txt
 
@@ -12,24 +12,28 @@
 module load samtools/1.22.1
 module load htslib/1.22.1
 
-#dowload data
-wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393630
-wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393631
-wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393632
+#download data
+wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393630/suppl/GSM5393630%5FE12%5FsnATAC%5Ffragments%2Etsv%2Egz
+wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393631/suppl/GSM5393631%5FE13%5FsnATAC%5Ffragments%2Etsv%2Egz
+wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393632/suppl/GSM5393632%5FE14%5FsnATAC%5Ffragments%2Etsv%2Egz
 
 #gunzip files
 gunzip *.tsv.gz
 
-mkdir fragment_files 
-mv *.tsv.gz fragment_files/
+#ensures files are downloaded
+echo "DIRECTORY CONTENTS" *.tsv
 
-cd fragment files
+#Create file for fragment files, move fragment files, then cd into directory
+mkdir fragment_files
+mv *.tsv fragment_files/
+cd fragment_files/
 
-echo $PWD
-echo *
+
+#echo $PWD
+echo "DIRECTORY OF FRAGMENT FILES" *.tsv
 
 #bgzips the file, the -f flag overwrites the older file
 bgzip -f *.tsv
 
 #check for whether it actually got bgzipped by checking the file type
-echo htsfile *.tsv
+htsfile *.tsv.gz
