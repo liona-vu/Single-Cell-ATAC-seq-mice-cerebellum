@@ -45,7 +45,7 @@ install.packages("/home/lionavu/projects/def-itobias/BINF_6999/R_libs/BSgenome.M
                   type = "source")
 
 #load mice reference pacakage
-library(BSgenome.Mmusculus.UCSC.mm10_1.4.3.tar.gz, 
+library(BSgenome.Mmusculus.UCSC.mm10, 
         lib.loc = "/home/lionavu/projects/def-itobias/BINF_6999/R_libs")
 
 #Set the ArchR default genome to mm10 
