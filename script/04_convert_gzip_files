@@ -18,13 +18,10 @@ wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393631
 wget https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5393632
 
 #gunzip files
-gunzip GSM5393630_E12_snATAC_fragments.tsv.gz
-gunzip GSM5393631_E13_snATAC_fragments.tsv.gz
-gunzip GSM5393632_E14_snATAC_fragments.tsv.gz
-
+gunzip *.tsv.gz
 
 mkdir fragment_files 
-mv GSM5393630_E12_snATAC_fragments.tsv.gz GSM5393631_E13_snATAC_fragments.tsv.gz GSM5393632_E14_snATAC_fragments.tsv.gz fragment_files/
+mv *.tsv.gz fragment_files/
 
 cd fragment files
 
@@ -32,11 +29,7 @@ echo $PWD
 echo *
 
 #bgzips the file, the -f flag overwrites the older file
-bgzip -f GSM5393630_E12_snATAC_fragments.tsv
-bgzip -f GSM5393631_E13_snATAC_fragments.tsv
-gzip -f GSM5393632_E14_snATAC_fragments.tsv
+bgzip -f *.tsv
 
 #check for whether it actually got bgzipped by checking the file type
-htsfile GSM5393630_E12_snATAC_fragments.tsv
-htsfile GSM5393631_E13_snATAC_fragments.tsv
-htsfile GSM5393632_E14_snATAC_fragments.tsv
+echo htsfile *.tsv
