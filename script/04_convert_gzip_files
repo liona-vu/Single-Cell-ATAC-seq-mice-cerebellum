@@ -13,10 +13,10 @@
 module load samtools/1.22.1
 module load htslib/1.22.1
 
-#download data
-wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393630/suppl/GSM5393630%5FE12%5FsnATAC%5Ffragments%2Etsv%2Egz
-wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393631/suppl/GSM5393631%5FE13%5FsnATAC%5Ffragments%2Etsv%2Egz
-wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393632/suppl/GSM5393632%5FE14%5FsnATAC%5Ffragments%2Etsv%2Egz
+#download data prior to running script
+#wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393630/suppl/GSM5393630%5FE12%5FsnATAC%5Ffragments%2Etsv%2Egz
+#wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393631/suppl/GSM5393631%5FE13%5FsnATAC%5Ffragments%2Etsv%2Egz
+#wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393632/suppl/GSM5393632%5FE14%5FsnATAC%5Ffragments%2Etsv%2Egz
 
 #gunzip files
 gunzip *.tsv.gz
