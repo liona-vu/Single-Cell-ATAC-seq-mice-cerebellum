@@ -2,6 +2,7 @@
 
 #SBATCH --job-name=03_download_macs2
 #SBATCH --account=def-itobias
+#SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=10G
 #SBATCH --time=00:10:00
