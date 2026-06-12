@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=download_archr
 #SBATCH --account=def-itobias
-#SBATCH --ntasks=1
+#SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:10:00
 #SBATCH --mem=10G
