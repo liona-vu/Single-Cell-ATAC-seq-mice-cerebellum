@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=download_archr
+#SBATCH --job-name=create_archr_sif
 #SBATCH --account=def-itobias
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
