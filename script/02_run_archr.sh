@@ -19,3 +19,10 @@ module load apptainer/1.4.5
 
 #run rscript
 apptainer exec archr_image.sif Rscript $INPUT_RSCRIPT
+
+
+#for an interactive session run this instead
+apptainer shell archr_image.sif
+
+#then run 
+R
