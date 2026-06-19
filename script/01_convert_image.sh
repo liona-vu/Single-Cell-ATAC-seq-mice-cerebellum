@@ -14,4 +14,4 @@
 module load apptainer/1.4.5
 
 #convert archr docker image to sif image for apptainer
-apptainer pull docker://immanuelazn/archr:latest
+apptainer build archr_image.sif docker://immanuelazn/archr:latest
