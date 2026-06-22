@@ -15,6 +15,53 @@ https://hub.docker.com/r/greenleaflab/archr
 
 and the Nibi High Computing Cluster provdided by the Digital Research Alliance of Canada (DRAC).
 
+Before beginning analysis, sign into the HPC cluster with your credentials, and convert docker image into Apptainer SIF image:
+
+```
+module load apptainer
+
+apptainer build archr_image.sif docker://immanuelazn/archr:latest
+```
+<br>
+
+Next, download the following software which will be critical to use for peak calling later:
+
+```
+module load scipy-stack/2026a
+
+pip install MACS2
+```
+<br>
+Download the fragment files that are required for this project.
+
+```
+wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393630/suppl/GSM5393630%5FE12%5FsnATAC%5Ffragments%2Etsv%2Egz
+wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393631/suppl/GSM5393631%5FE13%5FsnATAC%5Ffragments%2Etsv%2Egz
+wget https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM5393nnn/GSM5393632/suppl/GSM5393632%5FE14%5FsnATAC%5Ffragments%2Etsv%2Egz
+```
+<br>
+Next, convert gzipped files into bgzipped files for further ArchR analysis. Recommended to send as a batch script since it can take some time. Make sure you are in the same directory as to the fragment file locations. (Can go grab a coffee while you wait)
+
+```
+module load samtools/1.22.1
+module load htslib/1.22.1
+
+gunzip *.tsv.gz
+
+#Create file for fragment files, move fragment files, then cd into directory
+mkdir fragment_files
+mv *.tsv fragment_files/
+cd fragment_files/
+
+#bgzips the file, the -f flag overwrites the older file
+bgzip -f *.tsv
+
+#check for whether it actually got bgzipped by checking the file type
+htsfile *.tsv.gz
+
+```
+Once you are done with the aforementioned steps, run the R Script on the host R server.
+
 #### Software used:
 - R Studio v4.4.1 (2024-06-14) (based on the Docker image) <br>
 - ArchR v1.0.3 (2024-11-26) (based on the Docker image) <br>
