@@ -63,7 +63,13 @@ htsfile *.tsv.gz
 
 Once you are done with the aforementioned steps, move the files to your local computer because the initial analysis will be performed on the RStudio host server.
 
-To run a host server running RStudio, ensure you have the docker desktop app running the archr docker image. The run the following in terminal:
+To run a host server running RStudio, ensure you have the docker desktop app running the archr docker image. 
+```
+docker image pull immanuelazn/archr:latest
+```
+<br>
+
+Then, run the following in terminal:
 
 ```
 docker run -it --rm -v  your_directory_with_the_fragment_files:/home/rstudio -p 8787:8787 immanuelazn/archr:latest
