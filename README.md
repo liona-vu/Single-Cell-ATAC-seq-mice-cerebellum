@@ -1,6 +1,6 @@
 # Single-cell-ATAQ-seq analysis of chromatin accessibility in the developing mice cerebellum
 
-The project investigates the chromatin accessibility of the developing mice cerebellum using single-cell-ATAQ-seq analysis. The purpose of this project is to identify cis-regulatory elements (CREs) such as promoters and enhancers in several cerebellar cell types. The project adapts the standard ArchR workflow (Granja et al., 2021) which can be accessed with the link: https://www.archrproject.com/bookdown/index.html
+The project investigates the chromatin accessibility of the developing mice cerebellum using single-cell-ATAQ-seq analysis. The purpose of this project is to identify and compare cis-regulatory elements (CREs) such as promoters and enhancers in several cerebellar cell types. The project adapts the standard ArchR workflow (Granja et al., 2021) which can be accessed with the link: https://www.archrproject.com/bookdown/index.html
 
 The dataset used for the project is based on the published paper:
 Integrated single-cell transcriptomic and epigenetic study of cell state transition and lineage commitment in embryonic mouse cerebellum (Khouri-Farah et al., 2022)
@@ -13,7 +13,7 @@ https://zenodo.org/records/6097549#.Ygw5My-B30o
 Analysis was performed using a combination of a precompiled environment using a Docker/Apptainer image which can be accessed with this link:
 https://hub.docker.com/r/greenleaflab/archr
 
-and the Nibi High Computing Cluster provdided by the Digital Research Alliance of Canada (DRAC).
+a host server that runs RStudio, and the Nibi High Computing Cluster provdided by the Digital Research Alliance of Canada (DRAC).
 
 Before beginning analysis, sign into the HPC cluster with your credentials, and convert docker image into Apptainer SIF image:
 
@@ -32,6 +32,7 @@ module load scipy-stack/2026a
 pip install MACS2
 ```
 <br>
+
 Download the fragment files that are required for this project.
 
 ```
@@ -58,9 +59,21 @@ bgzip -f *.tsv
 
 #check for whether it actually got bgzipped by checking the file type
 htsfile *.tsv.gz
+```
+
+Once you are done with the aforementioned steps, move the files to your local computer because the initial analysis will be performed on the RStudio host server.
+
+To run a host server running RStudio, ensure you have the docker desktop app running the archr docker image. The run the following in terminal:
 
 ```
-Once you are done with the aforementioned steps, run the R Script on the host R server.
+docker run -it --rm -v  your_directory_with_the_fragment_files:/home/rstudio -p 8787:8787 immanuelazn/archr:latest
+```
+
+<br>
+
+Type http://localhost:8787/ in the search bar of the browser of your choice. In terminal, a password in red should show up. Type "rstudio" as the username and copy and paste the password in the password bar.
+
+Run the R Script on the host R server.
 
 #### Software used:
 - R Studio v4.4.1 (2024-06-14) (based on the Docker image) <br>
